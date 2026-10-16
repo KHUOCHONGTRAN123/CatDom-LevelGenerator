@@ -1,0 +1,24 @@
+{
+  "milestone": "03-seed-benchmark-and-static-preview",
+  "implementationRevision": "2026-10-15-footprint-25-32-m3",
+  "minHoleFootprint": 25,
+  "maxHoleFootprint": 32,
+  "components": {
+    "requestValidation": "source-written; not executed",
+    "staticValidation": "source-written; not executed",
+    "seededConstructor": "source-written; not executed",
+    "solver3Adapter": "source-written; not executed",
+    "v42ReplayAdapter": "source-written; not executed",
+    "reviewExport": "source-written; not executed",
+    "bottleneckCausalAnalysis": "local footprint shadow + replayed witness observations; NOT global necessity",
+    "alternativeSearch": "not implemented",
+    "repairTransactions": "written: four validated operators, transactional clone, repair trace, re-certification required",
+    "witnessProgressionAnalysis": "written: consumes/clear/queue revisit/reposition timeline",
+    "analyzeExistingCertifiedDraft": "written: standalone command",
+    "batchBenchmark": "written: seed sweep with per-seed reports, JSON+CSV aggregates, offline HTML index; runtime not verified",
+    "levelPreview": "written: static validated shape-based SVG, certified status requires matching existing report",
+    "experimentOverwriteGuard": "written: batch requires empty destination; files isolated per seed"
+  },
+  "buildTestedInPackagingEnvironment": false,
+  "runtimeLimitation": "dotnet SDK not present in packaging environment"
+}

@@ -1,0 +1,204 @@
+{
+  "source": "parallel-region-10-w10(1).zip",
+  "sourceSHA256": "c448e81d7fc905c2de231a1b861f55be2798baada00f744fa235c61825fb1243",
+  "schema": "offline-baseline/4.1b",
+  "startSeed": 115,
+  "seedCount": 20,
+  "workers": 10,
+  "batchElapsedWallMs": 510240.7104,
+  "certifiedCount": 16,
+  "budgetExhaustedCount": 4,
+  "totalAttempts": 463,
+  "totalRepairsProposed": 3610,
+  "totalRepairsCertified": 10,
+  "repairOperatorProposals": {
+    "MoveCat": 1792,
+    "EditQueueSupply": 898,
+    "MoveHole": 471,
+    "MoveWall": 449
+  },
+  "repairOperatorCertified": {
+    "MoveWall": 3,
+    "EditQueueSupply": 2,
+    "MoveCat": 5
+  },
+  "solverStatusesApprox": {
+    "NoNextCatReachable": 3909,
+    "Solved": 26,
+    "Cancelled": 121,
+    "NotRun": 17
+  },
+  "noNextCatReasonCounts": {
+    "All reachable parking states exhausted without a consumption event.": 3702,
+    "No movable component has a consumption target.": 207
+  },
+  "seedRows": [
+    {
+      "seed": 115,
+      "status": "ReviewRequired",
+      "elapsedMs": 193036.5089,
+      "attempts": 10,
+      "repairsProposed": 76,
+      "repairsCertified": 1
+    },
+    {
+      "seed": 116,
+      "status": "ReviewRequired",
+      "elapsedMs": 196632.3841,
+      "attempts": 22,
+      "repairsProposed": 172,
+      "repairsCertified": 1
+    },
+    {
+      "seed": 117,
+      "status": "ReviewRequired",
+      "elapsedMs": 198064.4627,
+      "attempts": 30,
+      "repairsProposed": 238,
+      "repairsCertified": 1
+    },
+    {
+      "seed": 118,
+      "status": "ReviewRequired",
+      "elapsedMs": 91797.781,
+      "attempts": 36,
+      "repairsProposed": 284,
+      "repairsCertified": 1
+    },
+    {
+      "seed": 119,
+      "status": "ReviewRequired",
+      "elapsedMs": 29111.5713,
+      "attempts": 11,
+      "repairsProposed": 84,
+      "repairsCertified": 1
+    },
+    {
+      "seed": 120,
+      "status": "BudgetExhausted",
+      "elapsedMs": 300017.1292,
+      "attempts": 64,
+      "repairsProposed": 505,
+      "repairsCertified": 0
+    },
+    {
+      "seed": 121,
+      "status": "ReviewRequired",
+      "elapsedMs": 128863.2007,
+      "attempts": 27,
+      "repairsProposed": 215,
+      "repairsCertified": 1
+    },
+    {
+      "seed": 122,
+      "status": "BudgetExhausted",
+      "elapsedMs": 300010.1149,
+      "attempts": 26,
+      "repairsProposed": 206,
+      "repairsCertified": 0
+    },
+    {
+      "seed": 123,
+      "status": "ReviewRequired",
+      "elapsedMs": 64093.8406,
+      "attempts": 12,
+      "repairsProposed": 88,
+      "repairsCertified": 0
+    },
+    {
+      "seed": 124,
+      "status": "ReviewRequired",
+      "elapsedMs": 228998.8589,
+      "attempts": 29,
+      "repairsProposed": 224,
+      "repairsCertified": 0
+    },
+    {
+      "seed": 125,
+      "status": "ReviewRequired",
+      "elapsedMs": 210151.6312,
+      "attempts": 57,
+      "repairsProposed": 454,
+      "repairsCertified": 1
+    },
+    {
+      "seed": 126,
+      "status": "ReviewRequired",
+      "elapsedMs": 105535.1011,
+      "attempts": 11,
+      "repairsProposed": 84,
+      "repairsCertified": 1
+    },
+    {
+      "seed": 127,
+      "status": "BudgetExhausted",
+      "elapsedMs": 300021.6042,
+      "attempts": 23,
+      "repairsProposed": 180,
+      "repairsCertified": 0
+    },
+    {
+      "seed": 128,
+      "status": "BudgetExhausted",
+      "elapsedMs": 300027.7029,
+      "attempts": 25,
+      "repairsProposed": 197,
+      "repairsCertified": 0
+    },
+    {
+      "seed": 129,
+      "status": "ReviewRequired",
+      "elapsedMs": 117835.1041,
+      "attempts": 17,
+      "repairsProposed": 134,
+      "repairsCertified": 1
+    },
+    {
+      "seed": 130,
+      "status": "ReviewRequired",
+      "elapsedMs": 107064.1617,
+      "attempts": 17,
+      "repairsProposed": 133,
+      "repairsCertified": 1
+    },
+    {
+      "seed": 131,
+      "status": "ReviewRequired",
+      "elapsedMs": 136712.6227,
+      "attempts": 9,
+      "repairsProposed": 64,
+      "repairsCertified": 0
+    },
+    {
+      "seed": 132,
+      "status": "ReviewRequired",
+      "elapsedMs": 131583.9582,
+      "attempts": 28,
+      "repairsProposed": 216,
+      "repairsCertified": 0
+    },
+    {
+      "seed": 133,
+      "status": "ReviewRequired",
+      "elapsedMs": 18112.6684,
+      "attempts": 5,
+      "repairsProposed": 32,
+      "repairsCertified": 0
+    },
+    {
+      "seed": 134,
+      "status": "ReviewRequired",
+      "elapsedMs": 10077.0657,
+      "attempts": 4,
+      "repairsProposed": 24,
+      "repairsCertified": 0
+    }
+  ],
+  "notes": [
+    "Old M3.1 reports do not retain timings for each repair/solver call.",
+    "Original attempt solver status can be overwritten after repair succeeds, so solverStatusesApprox is not an exact unique evaluation count.",
+    "The 3702 parking exhaustion and 207 missing targets reflect recorded events, not necessarily unique candidate layouts.",
+    "No claims of improved speed are possible until controlled A/B benchmark is run.",
+    "No cross-level similarity filtering performed."
+  ]
+}

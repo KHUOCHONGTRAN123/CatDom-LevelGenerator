@@ -1,0 +1,31 @@
+CATDOM LEVEL GENERATOR - Milestone 3 (C#/.NET 10)
+Hole footprint 25..32 inclusive; no forced target.
+
+From ZIP project root on Windows PowerShell:
+
+ dotnet run --project LevelGenerator.Tests
+
+ # Batch 3 different seeds, with observed bottleneck preference and bounded repairs
+ dotnet run --project LevelGenerator.Cli -- batch LevelGenerator.Examples/RegionRelease.repair.request.json generated/m3-region-001 IndependentSolver/IO/HoleShapes.json 3
+ Start-Process generated/m3-region-001/index.html
+
+ # Other pattern
+ dotnet run --project LevelGenerator.Cli -- batch LevelGenerator.Examples/QueueRevisitParking.repair.request.json generated/m3-queue-001 IndependentSolver/IO/HoleShapes.json 3
+ Start-Process generated/m3-queue-001/index.html
+
+ # Preview old certified draft
+ dotnet run --project LevelGenerator.Cli -- preview generated/region/certified-draft.json generated/region/preview.svg IndependentSolver/IO/HoleShapes.json generated/region/report.json
+
+IMPORTANT:
+- Choose a NEW EMPTY output folder for each batch; runs will NOT overwrite previous batch files.
+- 1-20 seeds sequentially; each seed uses its own budgets.totalRunMs.
+- Gallery is static layout; it is not a game simulation or quality judgement.
+- Certification means solver solved + independent V42 replay passed; human must review quality.
+- Read LevelGenerator.MILESTONE3.md for details.
+- Packaging environment has no .NET SDK; build/test must be run on the user's .NET 10 machine.
+
+MILESTONE 3.1 - PARALLEL BATCH (10 seeds, 8 workers):
+ dotnet run --project LevelGenerator.Cli -- batch LevelGenerator.Examples/RegionRelease.repair.request.json generated/parallel-region-10 IndependentSolver/IO/HoleShapes.json 10 --workers 8
+ Start-Process generated/parallel-region-10/index.html
+
+If memory gets tight, retry in a NEW folder with --workers 4. Batch defaults to at most four workers when --workers is omitted.

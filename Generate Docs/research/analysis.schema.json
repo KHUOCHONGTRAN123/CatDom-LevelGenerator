@@ -1,0 +1,503 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:vippro:bottleneck-analysis:0.1",
+  "title": "Bottleneck research study contract",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "bottleneck-analysis/0.1"
+    },
+    "analysisVersion": {
+      "type": "string"
+    },
+    "stateHashVersion": {
+      "type": "string"
+    },
+    "solverHash": {
+      "type": "string",
+      "pattern": "^[A-F0-9]{64}$"
+    },
+    "referenceHash": {
+      "type": "string",
+      "pattern": "^[A-F0-9]{64}$"
+    },
+    "analysisAssemblyHash": {
+      "type": "string",
+      "pattern": "^[A-F0-9]{64}$"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    },
+    "searches": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/searchResult"
+      }
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "difficultyScore": {
+      "type": "null"
+    },
+    "difficultyLabel": {
+      "const": "Unrated"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "analysisVersion",
+    "stateHashVersion",
+    "solverHash",
+    "referenceHash",
+    "analysisAssemblyHash",
+    "records",
+    "searches",
+    "cases",
+    "difficultyScore",
+    "difficultyLabel"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "record": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": "bottleneck-analysis/0.1"
+        },
+        "recordId": {
+          "type": "string"
+        },
+        "levelHash": {
+          "type": "string",
+          "pattern": "^[A-F0-9]{64}$"
+        },
+        "catalogHash": {
+          "type": "string",
+          "pattern": "^[A-F0-9]{64}$"
+        },
+        "analysisVersion": {
+          "type": "string"
+        },
+        "startStateHash": {
+          "type": "string",
+          "pattern": "^[A-F0-9]{64}$"
+        },
+        "goalPredicateVersion": {
+          "type": "string"
+        },
+        "blockedTasks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "affectedActors": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "type",
+              "statement",
+              "evidenceRefs"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "enum": [
+                  "Geometry",
+                  "Parking",
+                  "QueueOrder",
+                  "Supply",
+                  "Dependency",
+                  "Reservation",
+                  "Other"
+                ]
+              },
+              "statement": {
+                "type": "string"
+              },
+              "evidenceRefs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "supportTasks": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "alternatives": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/alternative"
+          }
+        },
+        "relief": {
+          "type": "object",
+          "required": [
+            "diagnostic",
+            "continuation",
+            "sameRemainingTaskCheck",
+            "residualTasks",
+            "cleanupTasks"
+          ],
+          "properties": {
+            "diagnostic": {
+              "type": "string"
+            },
+            "continuation": {
+              "type": "string"
+            },
+            "sameRemainingTaskCheck": {
+              "type": "string"
+            },
+            "residualTasks": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "cleanupTasks": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "unknowns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "recordId",
+        "levelHash",
+        "catalogHash",
+        "analysisVersion",
+        "startStateHash",
+        "goalPredicateVersion",
+        "blockedTasks",
+        "affectedActors",
+        "constraints",
+        "supportTasks",
+        "alternatives",
+        "relief",
+        "evidence",
+        "unknowns"
+      ],
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "class": {
+          "enum": [
+            "RuleNecessary",
+            "ObservedWitness",
+            "LocalDiagnostic",
+            "Hypothesis",
+            "ScopedSearchNecessary"
+          ]
+        },
+        "statement": {
+          "type": "string"
+        },
+        "artifact": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "limitations": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "class",
+        "statement",
+        "artifact",
+        "scope",
+        "limitations"
+      ],
+      "additionalProperties": false
+    },
+    "alternative": {
+      "type": "object",
+      "properties": {
+        "strategySignature": {
+          "type": "string"
+        },
+        "eventType": {
+          "enum": [
+            "Consume",
+            "Clear",
+            "Reposition",
+            "Composite"
+          ]
+        },
+        "witnessPlanHash": {
+          "type": "string",
+          "pattern": "^[A-F0-9]{64}$"
+        },
+        "startStateHash": {
+          "type": "string",
+          "pattern": "^[A-F0-9]{64}$"
+        },
+        "endStateHash": {
+          "type": "string",
+          "pattern": "^[A-F0-9]{64}$"
+        },
+        "searchResultRef": {
+          "type": "string"
+        },
+        "replayStatus": {
+          "type": "string"
+        },
+        "signatureVersion": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "strategySignature",
+        "eventType",
+        "witnessPlanHash",
+        "startStateHash",
+        "endStateHash",
+        "searchResultRef",
+        "replayStatus",
+        "signatureVersion"
+      ],
+      "additionalProperties": false
+    },
+    "searchScope": {
+      "type": "object",
+      "properties": {
+        "startStateHash": {
+          "type": "string"
+        },
+        "prefixHash": {
+          "type": "string"
+        },
+        "goalPredicate": {
+          "type": "string"
+        },
+        "forbiddenEvents": {
+          "type": "string"
+        },
+        "continuationPredicate": {
+          "type": "string"
+        },
+        "successorGeneration": {
+          "type": "string"
+        },
+        "stateEquivalence": {
+          "type": "string"
+        },
+        "maxDepth": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maxExpanded": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "seconds": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "completeEnumeration": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "startStateHash",
+        "prefixHash",
+        "goalPredicate",
+        "forbiddenEvents",
+        "continuationPredicate",
+        "successorGeneration",
+        "stateEquivalence",
+        "maxDepth",
+        "maxExpanded",
+        "seconds",
+        "completeEnumeration"
+      ],
+      "additionalProperties": false
+    },
+    "searchResult": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "Found",
+            "NotFoundWithinBudget",
+            "ProvedAbsentWithinCompleteScope",
+            "InvalidStartState",
+            "Unsupported"
+          ]
+        },
+        "scope": {
+          "$ref": "#/$defs/searchScope"
+        },
+        "expanded": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "generated": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "frontierRemaining": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "stopReason": {
+          "type": "string"
+        },
+        "completenessRationale": {
+          "type": "string"
+        },
+        "witnessHash": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-F0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "endStateHash": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-F0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "replayStatus": {
+          "type": "string"
+        },
+        "witnessSummary": {}
+      },
+      "required": [
+        "id",
+        "status",
+        "scope",
+        "expanded",
+        "generated",
+        "frontierRemaining",
+        "stopReason",
+        "completenessRationale",
+        "witnessHash",
+        "endStateHash",
+        "replayStatus",
+        "witnessSummary"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "Found"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "witnessHash": {
+                "type": "string",
+                "pattern": "^[A-F0-9]{64}$"
+              },
+              "endStateHash": {
+                "type": "string",
+                "pattern": "^[A-F0-9]{64}$"
+              },
+              "replayStatus": {
+                "type": "string",
+                "pattern": "^Independent"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "ProvedAbsentWithinCompleteScope"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "scope": {
+                "properties": {
+                  "completeEnumeration": {
+                    "const": true
+                  }
+                }
+              },
+              "frontierRemaining": {
+                "const": 0
+              },
+              "completenessRationale": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

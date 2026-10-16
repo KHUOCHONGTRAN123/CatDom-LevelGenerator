@@ -1,0 +1,10 @@
+<Solution>
+  <Project Path="IndependentSolver/IndependentSolver.csproj" />
+  <Project Path="Solver.Cli/Solver.Cli.csproj" />
+  <Project Path="Verification/Verification.csproj" />
+  <Project Path="Verification/V42Reference/V42Reference.csproj" />
+  <Project Path="Verification/ConsumerSmoke/ConsumerSmoke.csproj" />
+  <Project Path="LevelGenerator.Core/LevelGenerator.Core.csproj" />
+  <Project Path="LevelGenerator.Cli/LevelGenerator.Cli.csproj" />
+  <Project Path="LevelGenerator.Tests/LevelGenerator.Tests.csproj" />
+</Solution>

@@ -1,0 +1,73 @@
+# Build outputs
+**/bin/
+**/obj/
+**/*-bin/
+
+# Benchmark scratch data and old experiments
+Benchmark/experiments/
+Benchmark/results/*
+!Benchmark/results/route-dependency-v42-current/
+Benchmark/results/route-dependency-v42-current/*
+!Benchmark/results/route-dependency-v42-current/*.csv
+!Benchmark/results/route-dependency-v42-current/*.md
+!Benchmark/results/route-dependency-v42-current/summary.json
+!Benchmark/results/route-dependency-v42-current/*audit.json
+
+# Local IDE settings and secrets
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+.env
+.env.*
+*.pfx
+*.pem
+*.key
+Thumbs.db
+Desktop.ini
+
+# Solver 1.0 generated verification and release files
+artifacts/
+Verification/results/
+Verification/*-bin/
+Verification/frozen-v1/
+Verification/probe*.json
+Verification/cli-*.json
+Verification/unity-*.json
+Verification/unity-*.log
+Verification/UnitySmoke/Library/
+Verification/UnitySmoke/Temp/
+Verification/UnitySmoke/Logs/
+Verification/UnitySmoke/obj/
+Verification/UnitySmoke/Assets/Plugins/
+Verification/UnitySmoke/**/*.meta
+Verification/UnitySmoke/ProjectSettings/*
+!Verification/UnitySmoke/ProjectSettings/ProjectVersion.txt
+Verification/UnitySmoke/Packages/packages-lock.json
+Verification/UnitySmoke/*.log
+Verification/UnitySmoke/*.json
+
+# Local generated data (reference Levels/ and benchmark baselines stay tracked)
+/generated/
+/BenchmarkDotNet.Artifacts/
+/LevelGenerator.Benchmarks/results/
+/LevelGenerator.Benchmarks/output/
+/TestResults/
+*.log
+*.tmp
+*.temp
+*.cache
+*.zip
+*.7z
+*.bak
+*.nupkg
+*.snupkg
+# Credentials; retain shareable environment examples
+!.env.example
+!.env.sample
+*.p12
+*.p8
+credentials.json
+secrets.json
+appsettings.*.local.json

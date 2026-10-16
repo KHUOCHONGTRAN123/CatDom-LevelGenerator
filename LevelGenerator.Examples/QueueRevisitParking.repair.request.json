@@ -1,0 +1,63 @@
+{
+  "requestVersion": "levelgen-prototype/0.1",
+  "seed": 129,
+  "presetId": "wall-box-7x8-bottleneck",
+  "presetRevision": "2026-10-15-footprint-25-32-v1",
+  "catalogHash": "2d63d48a13dfbd2d94ad0a36518a973054c69da01273ae7ab5350f39d3eb744f",
+  "intent": {
+    "id": "queue-revisit-v1",
+    "version": "0.1",
+    "pattern": "QueueRevisitParking",
+    "unknownPolicy": "Repair",
+    "blockedTasks": [
+      "target-color-source-access"
+    ],
+    "actorRoles": [
+      "consumer",
+      "blocker",
+      "support"
+    ],
+    "constraintRoles": [
+      "shared-corridor",
+      "parking-area",
+      "box-mouth"
+    ],
+    "candidateBreakTypes": [
+      "clear",
+      "reposition",
+      "consume"
+    ],
+    "expectedUnlockedTasks": [
+      "target-source-access"
+    ],
+    "continuationGoal": "Complete all initial hole demands",
+    "allowedAlternatives": [
+      "clear-blocker",
+      "park-blocker"
+    ],
+    "protectedIntent": true
+  },
+  "targetPolicy": {
+    "minHoleFootprint": 25,
+    "maxHoleFootprint": 32,
+    "targetHoleFootprint": null,
+    "boxCount": 3,
+    "deviationPolicy": "Review"
+  },
+  "operatorPolicy": {
+    "enabled": [
+      "MoveCat",
+      "MoveHole",
+      "MoveWall",
+      "EditQueueSupply"
+    ]
+  },
+  "budgets": {
+    "maxAttempts": 100,
+    "maxRepairsPerAttempt": 8,
+    "totalRunMs": 300000,
+    "perSolveMs": 15000,
+    "alternativeSearchMs": 5000,
+    "alternativeSearchMaxStates": 10000
+  }
+}

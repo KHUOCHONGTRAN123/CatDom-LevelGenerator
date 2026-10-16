@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <ProjectReference Include="../IndependentSolver/IndependentSolver.csproj" />
+    <ProjectReference Include="../Verification/V42Reference/V42Reference.csproj" />
+    <None Include="../IndependentSolver/IO/HoleShapes.json" Link="HoleShapes.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

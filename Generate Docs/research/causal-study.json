@@ -1,0 +1,1780 @@
+{
+  "schemaVersion": "bottleneck-analysis/0.1",
+  "analysisVersion": "causal-study/0.1",
+  "stateHashVersion": "snapshot-canonical-v1",
+  "solverHash": "5F94199205C63A4283021CA57DB40192697DFA04A3BBC7D2D96CC4284FC87A43",
+  "referenceHash": "FD61D98A9DF227DCF4E5A1166CC637D3690E9C096C74B6A211009D18DC7C65EE",
+  "analysisAssemblyHash": "B9DAF24899263264CF6945766434E4A6EF77DF1F290A095E12D639B0FBDE3A02",
+  "records": [
+    {
+      "schemaVersion": "bottleneck-analysis/0.1",
+      "recordId": "Level00115-lower-right",
+      "levelHash": "4BCCC3F06B93AC953D3505A83CD16383AFD60542DE8D8FACEC82291A7E6ED1B8",
+      "catalogHash": "C842DAE3978EACB318399DCE65E1CE34CDDBB4859E52C043CCE0A43A50EAFC93",
+      "analysisVersion": "causal-study/0.1",
+      "startStateHash": "E1007BB6C3C8FFAF476D7C684CD270D1E3F593DC39362C8EBBA378C3C74E947F",
+      "goalPredicateVersion": "classic-goals/0.1",
+      "blockedTasks": [
+        "h2 lower-right board sources then b2 mouth"
+      ],
+      "affectedActors": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "constraints": [
+        {
+          "id": "queue-order",
+          "type": "QueueOrder",
+          "statement": "Ordered consumption",
+          "evidenceRefs": [
+            "queue-rule"
+          ]
+        },
+        {
+          "id": "parking",
+          "type": "Parking",
+          "statement": "Useful footprint routing and staging",
+          "evidenceRefs": [
+            "geometry"
+          ]
+        }
+      ],
+      "supportTasks": [
+        {
+          "taskId": "Q115-B-endpoint-freeze-h0",
+          "actor": 0,
+          "necessityStatus": "ScopedSearchNecessary",
+          "reason": "Removing this actor's one fixed endpoint action eliminates all declared schedules; not global necessity",
+          "evidenceRef": "Q115-B-endpoint-freeze-h0"
+        },
+        {
+          "taskId": "Q115-B-endpoint-freeze-h7",
+          "actor": 7,
+          "necessityStatus": "ScopedSearchNecessary",
+          "reason": "Removing this actor's one fixed endpoint action eliminates all declared schedules; not global necessity",
+          "evidenceRef": "Q115-B-endpoint-freeze-h7"
+        },
+        {
+          "taskId": "Q115-B-endpoint-freeze-h2",
+          "actor": 2,
+          "necessityStatus": "ScopedSearchNecessary",
+          "reason": "Removing this actor's one fixed endpoint action eliminates all declared schedules; not global necessity",
+          "evidenceRef": "Q115-B-endpoint-freeze-h2"
+        },
+        {
+          "taskId": "Q115-B-endpoint-freeze-h3",
+          "actor": 3,
+          "necessityStatus": "ScopedSearchNecessary",
+          "reason": "Removing this actor's one fixed endpoint action eliminates all declared schedules; not global necessity",
+          "evidenceRef": "Q115-B-endpoint-freeze-h3"
+        },
+        {
+          "taskId": "Q115-B-endpoint-freeze-h5",
+          "actor": 5,
+          "necessityStatus": "ScopedSearchNecessary",
+          "reason": "Removing this actor's one fixed endpoint action eliminates all declared schedules; not global necessity",
+          "evidenceRef": "Q115-B-endpoint-freeze-h5"
+        }
+      ],
+      "alternatives": [
+        {
+          "strategySignature": "clear-h4",
+          "eventType": "Clear",
+          "witnessPlanHash": "92A75AB86748061DC9A2C4D2CA6477205413F46748B8AD72B43B5A0B8B2FADAD",
+          "startStateHash": "E1007BB6C3C8FFAF476D7C684CD270D1E3F593DC39362C8EBBA378C3C74E947F",
+          "endStateHash": "88B4578DE999B840E3C74E051A728538954A4841C40C338EF73404EB736C299B",
+          "searchResultRef": "existing-witness",
+          "replayStatus": "IndependentSolved",
+          "signatureVersion": "witness-style/0.1"
+        },
+        {
+          "strategySignature": "park-live-h4",
+          "eventType": "Reposition",
+          "witnessPlanHash": "5D8FF5AEF9980F7DDFBB324A3B9F0CACFADE3892AF8E202CAE13DA3078E4205E",
+          "startStateHash": "E1007BB6C3C8FFAF476D7C684CD270D1E3F593DC39362C8EBBA378C3C74E947F",
+          "endStateHash": "9975D2BE25DAC13BA4F7E0F8AA91EA4A42F8EF0AE1C6136C6430B47409DD3D80",
+          "searchResultRef": "existing-witness",
+          "replayStatus": "IndependentSolved",
+          "signatureVersion": "witness-style/0.1"
+        }
+      ],
+      "relief": {
+        "diagnostic": "footprint-shadow and relocation plus continuation",
+        "continuation": "h2 consumes remaining sources; h7/h3/h1 use b2",
+        "sameRemainingTaskCheck": "Fresh state-local footprint-shadow checks in cases[].reliefChecks",
+        "residualTasks": [
+          "Unknown global residual bottleneck attribution; inspect other branch/queue and parking tasks"
+        ],
+        "cleanupTasks": [
+          "Unknown global cleanup boundary; direct tail is witness-specific"
+        ]
+      },
+      "evidence": [
+        {
+          "id": "queue-rule",
+          "class": "RuleNecessary",
+          "statement": "Consume queue entries in order; completion not required for queue advance",
+          "artifact": "Levels/Level00115.json",
+          "scope": "single-layer ordinary queue",
+          "limitations": "Does not establish completion dependencies"
+        },
+        {
+          "id": "replayed-witnesses",
+          "class": "ObservedWitness",
+          "statement": "Two complete plans independently replay to win; live queue visits recorded",
+          "artifact": "causal-study.json#cases",
+          "scope": "two solver modes of this input",
+          "limitations": "No optimum, necessity or uniqueness claim"
+        },
+        {
+          "id": "geometry",
+          "class": "LocalDiagnostic",
+          "statement": "Clear or reposition h4 unlocks h2 lower-right targets",
+          "artifact": "access-focus-*.json",
+          "scope": "state-local or structural only",
+          "limitations": "Actor graph cycles do not prove cognitive difficulty"
+        },
+        {
+          "id": "Q115-B-endpoint-freeze-h0",
+          "class": "ScopedSearchNecessary",
+          "statement": "Fixed endpoint schedule has no solution after excluding this actor",
+          "artifact": "causal-study.json#searches",
+          "scope": "all ordered subsets of actor/endpoints: h2:(4,5);h3:(3,6);h4:(0,3);h5:(1,5);h7:(1,0)",
+          "limitations": "Only this start snapshot and one move per declared actor to fixed anchors; other parking or repeated moves untested"
+        },
+        {
+          "id": "Q115-B-endpoint-freeze-h7",
+          "class": "ScopedSearchNecessary",
+          "statement": "Fixed endpoint schedule has no solution after excluding this actor",
+          "artifact": "causal-study.json#searches",
+          "scope": "all ordered subsets of actor/endpoints: h0:(0,0);h2:(4,5);h3:(3,6);h4:(0,3);h5:(1,5)",
+          "limitations": "Only this start snapshot and one move per declared actor to fixed anchors; other parking or repeated moves untested"
+        },
+        {
+          "id": "Q115-B-endpoint-freeze-h2",
+          "class": "ScopedSearchNecessary",
+          "statement": "Fixed endpoint schedule has no solution after excluding this actor",
+          "artifact": "causal-study.json#searches",
+          "scope": "all ordered subsets of actor/endpoints: h0:(0,0);h3:(3,6);h4:(0,3);h5:(1,5);h7:(1,0)",
+          "limitations": "Only this start snapshot and one move per declared actor to fixed anchors; other parking or repeated moves untested"
+        },
+        {
+          "id": "Q115-B-endpoint-freeze-h3",
+          "class": "ScopedSearchNecessary",
+          "statement": "Fixed endpoint schedule has no solution after excluding this actor",
+          "artifact": "causal-study.json#searches",
+          "scope": "all ordered subsets of actor/endpoints: h0:(0,0);h2:(4,5);h4:(0,3);h5:(1,5);h7:(1,0)",
+          "limitations": "Only this start snapshot and one move per declared actor to fixed anchors; other parking or repeated moves untested"
+        },
+        {
+          "id": "Q115-B-endpoint-freeze-h5",
+          "class": "ScopedSearchNecessary",
+          "statement": "Fixed endpoint schedule has no solution after excluding this actor",
+          "artifact": "causal-study.json#searches",
+          "scope": "all ordered subsets of actor/endpoints: h0:(0,0);h2:(4,5);h3:(3,6);h4:(0,3);h7:(1,0)",
+          "limitations": "Only this start snapshot and one move per declared actor to fixed anchors; other parking or repeated moves untested"
+        }
+      ],
+      "unknowns": [
+        "Minimal reasoning/lookahead Unknown",
+        "Global main bottleneck Unknown",
+        "DifficultyScore Unrated",
+        "Human fairness and queue visibility unverified"
+      ]
+    },
+    {
+      "schemaVersion": "bottleneck-analysis/0.1",
+      "recordId": "Level00115-b3-release",
+      "levelHash": "4BCCC3F06B93AC953D3505A83CD16383AFD60542DE8D8FACEC82291A7E6ED1B8",
+      "catalogHash": "C842DAE3978EACB318399DCE65E1CE34CDDBB4859E52C043CCE0A43A50EAFC93",
+      "analysisVersion": "causal-study/0.1",
+      "startStateHash": "E1007BB6C3C8FFAF476D7C684CD270D1E3F593DC39362C8EBBA378C3C74E947F",
+      "goalPredicateVersion": "classic-goals/0.1",
+      "blockedTasks": [
+        "Expose b3 color6 and make mouth usable by h0"
+      ],
+      "affectedActors": [
+        6,
+        0
+      ],
+      "constraints": [
+        {
+          "id": "queue-order",
+          "type": "QueueOrder",
+          "statement": "Ordered consumption",
+          "evidenceRefs": [
+            "queue-rule"
+          ]
+        },
+        {
+          "id": "parking",
+          "type": "Parking",
+          "statement": "Useful footprint routing and staging",
+          "evidenceRefs": [
+            "geometry"
+          ]
+        }
+      ],
+      "supportTasks": [
+        {
+          "taskId": "b3-earlier-support",
+          "necessityStatus": "Unknown",
+          "reason": "No global attribution of prefix to this branch"
+        }
+      ],
+      "alternatives": [
+        {
+          "strategySignature": "consume-b3-head-and-clear-h6",
+          "eventType": "Composite",
+          "witnessPlanHash": "92A75AB86748061DC9A2C4D2CA6477205413F46748B8AD72B43B5A0B8B2FADAD",
+          "startStateHash": "6CBECD7E3DD83F380D7110CCCD676E9513C083F85A000D938EC6778792D35E45",
+          "endStateHash": "CDD37EFFC0946F60F3C52219A32DC16AB6EDC3B5734AD483AA038092EB798E44",
+          "searchResultRef": "existing-witness",
+          "replayStatus": "IndependentSolved",
+          "signatureVersion": "witness-style/0.1"
+        },
+        {
+          "strategySignature": "consume-b3-head-and-clear-h6",
+          "eventType": "Composite",
+          "witnessPlanHash": "5D8FF5AEF9980F7DDFBB324A3B9F0CACFADE3892AF8E202CAE13DA3078E4205E",
+          "startStateHash": "7E452BE5232D02477F3CFBA539482F498A64E8C17336EFE0B5D5A4789355F2A4",
+          "endStateHash": "A37E68B5CB8B232DDC265710FAA263A6EAB2859B71B8248C034CEBB2F5502F79",
+          "searchResultRef": "existing-witness",
+          "replayStatus": "IndependentSolved",
+          "signatureVersion": "witness-style/0.1"
+        }
+      ],
+      "relief": {
+        "diagnostic": "b3 head advances 0→6; h0 consumes next in both witnesses; footprint shadow supports mouth release",
+        "continuation": "h0 follows h6",
+        "sameRemainingTaskCheck": "Previous access-focus diagnostics",
+        "residualTasks": [
+          "Lower-right h2/b2 still needs preparation in both witnesses; global dependency Unknown"
+        ],
+        "cleanupTasks": [
+          "Not established immediately after b3 release"
+        ]
+      },
+      "evidence": [
+        {
+          "id": "queue-rule",
+          "class": "RuleNecessary",
+          "statement": "Consume queue entries in order; completion not required for queue advance",
+          "artifact": "Levels/Level00115.json",
+          "scope": "single-layer ordinary queue",
+          "limitations": "Does not establish completion dependencies"
+        },
+        {
+          "id": "replayed-witnesses",
+          "class": "ObservedWitness",
+          "statement": "Two complete plans independently replay to win; live queue visits recorded",
+          "artifact": "causal-study.json#cases",
+          "scope": "two solver modes of this input",
+          "limitations": "No optimum, necessity or uniqueness claim"
+        },
+        {
+          "id": "geometry",
+          "class": "LocalDiagnostic",
+          "statement": "h6 disappearance releases next h0 queue access at b3",
+          "artifact": "access-focus-*.json",
+          "scope": "post-h6-clear snapshot only",
+          "limitations": "Actor graph cycles do not prove cognitive difficulty"
+        }
+      ],
+      "unknowns": [
+        "Whether b3/h6 is a global prerequisite of lower-right Unknown",
+        "Contribution of earlier unrelated work Unknown"
+      ]
+    },
+    {
+      "schemaVersion": "bottleneck-analysis/0.1",
+      "recordId": "Level00098-queue-parking",
+      "levelHash": "D1EEF5761CAD37F699DD7536ED179C34B28DB625330E851A4F2DAF2E3DCD11D2",
+      "catalogHash": "C842DAE3978EACB318399DCE65E1CE34CDDBB4859E52C043CCE0A43A50EAFC93",
+      "analysisVersion": "causal-study/0.1",
+      "startStateHash": "9DFABECA8E28C88F24FF411D986496A731C966AF4BAD21B422DEDE9A6A2AE165",
+      "goalPredicateVersion": "classic-goals/0.1",
+      "blockedTasks": [
+        "partial supply across queue consumers and useful parking"
+      ],
+      "affectedActors": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "constraints": [
+        {
+          "id": "queue-order",
+          "type": "QueueOrder",
+          "statement": "Ordered consumption",
+          "evidenceRefs": [
+            "queue-rule"
+          ]
+        },
+        {
+          "id": "parking",
+          "type": "Parking",
+          "statement": "Useful footprint routing and staging",
+          "evidenceRefs": [
+            "geometry"
+          ]
+        }
+      ],
+      "supportTasks": [
+        {
+          "taskId": "support-attribution",
+          "necessityStatus": "Unknown",
+          "reason": "Bounded alternative study; no global minimal-support proof"
+        }
+      ],
+      "alternatives": [
+        {
+          "strategySignature": "witness-hybrid",
+          "eventType": "Composite",
+          "witnessPlanHash": "C6C213B0D157D3B66FD42903E3973A9A7288BE31CDB518513A9F1A8146465207",
+          "startStateHash": "9DFABECA8E28C88F24FF411D986496A731C966AF4BAD21B422DEDE9A6A2AE165",
+          "endStateHash": "56C44BF301B3F209D10BD1ECEFAAA8EE03328D2039C0D0025D68342F4706C839",
+          "searchResultRef": "existing-witness",
+          "replayStatus": "IndependentSolved",
+          "signatureVersion": "witness-style/0.1"
+        },
+        {
+          "strategySignature": "witness-improved",
+          "eventType": "Composite",
+          "witnessPlanHash": "A3B081228E7BB5A9417A7CE4E785B425FAF95D0A55D67945C339309B47E3EE1B",
+          "startStateHash": "9DFABECA8E28C88F24FF411D986496A731C966AF4BAD21B422DEDE9A6A2AE165",
+          "endStateHash": "56C44BF301B3F209D10BD1ECEFAAA8EE03328D2039C0D0025D68342F4706C839",
+          "searchResultRef": "existing-witness",
+          "replayStatus": "IndependentSolved",
+          "signatureVersion": "witness-style/0.1"
+        }
+      ],
+      "relief": {
+        "diagnostic": "queue live-visit trace; no independent causal relief isolation yet",
+        "continuation": "Local clear unlocks a task consumed in same independently replayed plan; global queue knot remains Proposed",
+        "sameRemainingTaskCheck": "Fresh state-local footprint-shadow checks in cases[].reliefChecks",
+        "residualTasks": [
+          "Unknown global residual bottleneck attribution; inspect other branch/queue and parking tasks"
+        ],
+        "cleanupTasks": [
+          "Unknown global cleanup boundary; direct tail is witness-specific"
+        ]
+      },
+      "evidence": [
+        {
+          "id": "queue-rule",
+          "class": "RuleNecessary",
+          "statement": "Consume queue entries in order; completion not required for queue advance",
+          "artifact": "Levels/Level00098.json",
+          "scope": "single-layer ordinary queue",
+          "limitations": "Does not establish completion dependencies"
+        },
+        {
+          "id": "replayed-witnesses",
+          "class": "ObservedWitness",
+          "statement": "Two complete plans independently replay to win; live queue visits recorded",
+          "artifact": "causal-study.json#cases",
+          "scope": "two solver modes of this input",
+          "limitations": "No optimum, necessity or uniqueness claim"
+        },
+        {
+          "id": "geometry",
+          "class": "Hypothesis",
+          "statement": "Queue revisit may require parking coordination",
+          "artifact": "Levels/Level00098.json",
+          "scope": "state-local or structural only",
+          "limitations": "Actor graph cycles do not prove cognitive difficulty"
+        }
+      ],
+      "unknowns": [
+        "Minimal reasoning/lookahead Unknown",
+        "Global main bottleneck Unknown",
+        "DifficultyScore Unrated",
+        "Human fairness and queue visibility unverified"
+      ]
+    },
+    {
+      "schemaVersion": "bottleneck-analysis/0.1",
+      "recordId": "Level00129-queue-parking",
+      "levelHash": "DE860A3055311057874E64E9E266C084CC224D4385431791A0382061EA4D2985",
+      "catalogHash": "C842DAE3978EACB318399DCE65E1CE34CDDBB4859E52C043CCE0A43A50EAFC93",
+      "analysisVersion": "causal-study/0.1",
+      "startStateHash": "75EA62D3A0BBF4C295B0747FB8B911647F4A06533F2551BDD232189654C72AC4",
+      "goalPredicateVersion": "classic-goals/0.1",
+      "blockedTasks": [
+        "partial supply across queue consumers and useful parking"
+      ],
+      "affectedActors": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "constraints": [
+        {
+          "id": "queue-order",
+          "type": "QueueOrder",
+          "statement": "Ordered consumption",
+          "evidenceRefs": [
+            "queue-rule"
+          ]
+        },
+        {
+          "id": "parking",
+          "type": "Parking",
+          "statement": "Useful footprint routing and staging",
+          "evidenceRefs": [
+            "geometry"
+          ]
+        }
+      ],
+      "supportTasks": [
+        {
+          "taskId": "support-attribution",
+          "necessityStatus": "Unknown",
+          "reason": "Bounded alternative study; no global minimal-support proof"
+        }
+      ],
+      "alternatives": [
+        {
+          "strategySignature": "witness-hybrid",
+          "eventType": "Composite",
+          "witnessPlanHash": "CE0C8FEE329F357327CA281143616AE18690F2592BB5D0674D586D584D7595C1",
+          "startStateHash": "75EA62D3A0BBF4C295B0747FB8B911647F4A06533F2551BDD232189654C72AC4",
+          "endStateHash": "B5F42AE305BC7E93FABE46B0154A461441AFBC595D32DB831267F2ED3025DDD2",
+          "searchResultRef": "existing-witness",
+          "replayStatus": "IndependentSolved",
+          "signatureVersion": "witness-style/0.1"
+        },
+        {
+          "strategySignature": "witness-improved",
+          "eventType": "Composite",
+          "witnessPlanHash": "57CA5140A4796588E8A4F3BB2FB278FF51DE11B7124CB9B2876C2F2B925761D9",
+          "startStateHash": "75EA62D3A0BBF4C295B0747FB8B911647F4A06533F2551BDD232189654C72AC4",
+          "endStateHash": "B5F42AE305BC7E93FABE46B0154A461441AFBC595D32DB831267F2ED3025DDD2",
+          "searchResultRef": "existing-witness",
+          "replayStatus": "IndependentSolved",
+          "signatureVersion": "witness-style/0.1"
+        }
+      ],
+      "relief": {
+        "diagnostic": "queue live-visit trace; no independent causal relief isolation yet",
+        "continuation": "Local clear unlocks a task consumed in same independently replayed plan; global queue knot remains Proposed",
+        "sameRemainingTaskCheck": "Fresh state-local footprint-shadow checks in cases[].reliefChecks",
+        "residualTasks": [
+          "Unknown global residual bottleneck attribution; inspect other branch/queue and parking tasks"
+        ],
+        "cleanupTasks": [
+          "Unknown global cleanup boundary; direct tail is witness-specific"
+        ]
+      },
+      "evidence": [
+        {
+          "id": "queue-rule",
+          "class": "RuleNecessary",
+          "statement": "Consume queue entries in order; completion not required for queue advance",
+          "artifact": "Levels/Level00129.json",
+          "scope": "single-layer ordinary queue",
+          "limitations": "Does not establish completion dependencies"
+        },
+        {
+          "id": "replayed-witnesses",
+          "class": "ObservedWitness",
+          "statement": "Two complete plans independently replay to win; live queue visits recorded",
+          "artifact": "causal-study.json#cases",
+          "scope": "two solver modes of this input",
+          "limitations": "No optimum, necessity or uniqueness claim"
+        },
+        {
+          "id": "geometry",
+          "class": "Hypothesis",
+          "statement": "Queue revisit may require parking coordination",
+          "artifact": "Levels/Level00129.json",
+          "scope": "state-local or structural only",
+          "limitations": "Actor graph cycles do not prove cognitive difficulty"
+        }
+      ],
+      "unknowns": [
+        "Minimal reasoning/lookahead Unknown",
+        "Global main bottleneck Unknown",
+        "DifficultyScore Unrated",
+        "Human fairness and queue visibility unverified"
+      ]
+    }
+  ],
+  "searches": [
+    {
+      "id": "Q115-A-local",
+      "status": "NotFoundWithinBudget",
+      "scope": {
+        "startStateHash": "7E452BE5232D02477F3CFBA539482F498A64E8C17336EFE0B5D5A4789355F2A4",
+        "prefixHash": "879244F990D5B0D63EF5C9664B368702C3F54B18E516322B1D9DEF272BDABE28",
+        "goalPredicate": "h2 consumes cat6 and cat13 while h6 remains live",
+        "forbiddenEvents": "clear(h6)",
+        "continuationPredicate": "goal-state prefix must independently replay; full-win continuation not required",
+        "successorGeneration": "shortest-path anchors, stop at first consume; beamWidth=35; actors=all",
+        "stateEquivalence": "full snapshot canonical-v1; best depth dedup",
+        "maxDepth": 12,
+        "maxExpanded": 2500,
+        "seconds": 18,
+        "completeEnumeration": false
+      },
+      "expanded": 150,
+      "generated": 3835,
+      "frontierRemaining": 524,
+      "stopReason": "time budget during successor generation",
+      "completenessRationale": "Beam/first-event/depth/start restrictions; not exhaustive global search",
+      "witnessHash": null,
+      "endStateHash": null,
+      "replayStatus": "None",
+      "witnessSummary": null
+    },
+    {
+      "id": "Q115-B-final-reposition",
+      "status": "Found",
+      "scope": {
+        "startStateHash": "76CB4DA8970C5F779B3C56D8284B26906F3F070C3CD074DCF712469F59519D56",
+        "prefixHash": "CD30FE4D15A87AE6A6FFB4254EAAA2A1DD892A144C8DB3CF85479260E8995044",
+        "goalPredicate": "live h4 parks at(0,3), then verify both h2 first-consumption targets",
+        "forbiddenEvents": "clear(h4)",
+        "continuationPredicate": "goal-state prefix must independently replay; full-win continuation not required",
+        "successorGeneration": "shortest-path anchors, stop at first consume; beamWidth=100; actors=4",
+        "stateEquivalence": "full snapshot canonical-v1; best depth dedup",
+        "maxDepth": 1,
+        "maxExpanded": 100,
+        "seconds": 5,
+        "completeEnumeration": false
+      },
+      "expanded": 1,
+      "generated": 8,
+      "frontierRemaining": 8,
+      "stopReason": "goal reached",
+      "completenessRationale": "Positive witness only; no necessity/optimality claim",
+      "witnessHash": "089632A146D2EBA73BD86818EEC26826B8B56829139BA71A3D671EF0E041B110",
+      "endStateHash": "9975D2BE25DAC13BA4F7E0F8AA91EA4A42F8EF0AE1C6136C6430B47409DD3D80",
+      "replayStatus": "IndependentPrefixMatched",
+      "witnessSummary": [
+        {
+          "holeId": 4,
+          "start": {
+            "x": 4,
+            "y": 0
+          },
+          "end": {
+            "x": 0,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q115-B-endpoint-baseline",
+      "status": "Found",
+      "scope": {
+        "startStateHash": "1FE865EE19AA97EB1B6925C38713EA2DB2D52370E279BC41F9B1C0ED04B02A84",
+        "prefixHash": "C6925A5C9C5DC54780177623F7E4EF7E0B2B49B0F48B743F325D5BADF165DE3A",
+        "goalPredicate": "live h4 parks at(0,3) and both h2 sources accessible with others fixed",
+        "forbiddenEvents": "Only declared actors, each moved at most once to its declared endpoint",
+        "continuationPredicate": "goal-state independently replayed prefix; no full-win obligation",
+        "successorGeneration": "all ordered subsets of actor/endpoints: h0:(0,0);h2:(4,5);h3:(3,6);h4:(0,3);h5:(1,5);h7:(1,0)",
+        "stateEquivalence": "full snapshot + remaining action set",
+        "maxDepth": 6,
+        "maxExpanded": 10000,
+        "seconds": 0,
+        "completeEnumeration": true
+      },
+      "expanded": 6,
+      "generated": 6,
+      "frontierRemaining": 0,
+      "stopReason": "goal reached",
+      "completenessRationale": "Positive schedule witness only",
+      "witnessHash": "5AA584BB0CC27B417E895A1300DDAA4B977D6C8FA20B349223551FEB27D1CA23",
+      "endStateHash": "9975D2BE25DAC13BA4F7E0F8AA91EA4A42F8EF0AE1C6136C6430B47409DD3D80",
+      "replayStatus": "IndependentPrefixMatched",
+      "witnessSummary": [
+        {
+          "holeId": 0,
+          "start": {
+            "x": 1,
+            "y": 0
+          },
+          "end": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "holeId": 2,
+          "start": {
+            "x": 1,
+            "y": 6
+          },
+          "end": {
+            "x": 4,
+            "y": 5
+          }
+        },
+        {
+          "holeId": 7,
+          "start": {
+            "x": 2,
+            "y": 2
+          },
+          "end": {
+            "x": 1,
+            "y": 0
+          }
+        },
+        {
+          "holeId": 3,
+          "start": {
+            "x": 5,
+            "y": 2
+          },
+          "end": {
+            "x": 3,
+            "y": 6
+          }
+        },
+        {
+          "holeId": 5,
+          "start": {
+            "x": 4,
+            "y": 3
+          },
+          "end": {
+            "x": 1,
+            "y": 5
+          }
+        },
+        {
+          "holeId": 4,
+          "start": {
+            "x": 4,
+            "y": 0
+          },
+          "end": {
+            "x": 0,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q115-B-endpoint-freeze-h0",
+      "status": "ProvedAbsentWithinCompleteScope",
+      "scope": {
+        "startStateHash": "1FE865EE19AA97EB1B6925C38713EA2DB2D52370E279BC41F9B1C0ED04B02A84",
+        "prefixHash": "C6925A5C9C5DC54780177623F7E4EF7E0B2B49B0F48B743F325D5BADF165DE3A",
+        "goalPredicate": "live h4 parks at(0,3) and both h2 sources accessible with others fixed",
+        "forbiddenEvents": "Only declared actors, each moved at most once to its declared endpoint",
+        "continuationPredicate": "goal-state independently replayed prefix; no full-win obligation",
+        "successorGeneration": "all ordered subsets of actor/endpoints: h2:(4,5);h3:(3,6);h4:(0,3);h5:(1,5);h7:(1,0)",
+        "stateEquivalence": "full snapshot + remaining action set",
+        "maxDepth": 5,
+        "maxExpanded": 10000,
+        "seconds": 0,
+        "completeEnumeration": true
+      },
+      "expanded": 2,
+      "generated": 1,
+      "frontierRemaining": 0,
+      "stopReason": "all declared schedules exhausted",
+      "completenessRationale": "Every ordered subset of the fixed endpoint actions was recursively enumerated; deterministic shortest first-event path per action; not all board moves",
+      "witnessHash": null,
+      "endStateHash": null,
+      "replayStatus": "None",
+      "witnessSummary": null
+    },
+    {
+      "id": "Q115-B-endpoint-freeze-h7",
+      "status": "ProvedAbsentWithinCompleteScope",
+      "scope": {
+        "startStateHash": "1FE865EE19AA97EB1B6925C38713EA2DB2D52370E279BC41F9B1C0ED04B02A84",
+        "prefixHash": "C6925A5C9C5DC54780177623F7E4EF7E0B2B49B0F48B743F325D5BADF165DE3A",
+        "goalPredicate": "live h4 parks at(0,3) and both h2 sources accessible with others fixed",
+        "forbiddenEvents": "Only declared actors, each moved at most once to its declared endpoint",
+        "continuationPredicate": "goal-state independently replayed prefix; no full-win obligation",
+        "successorGeneration": "all ordered subsets of actor/endpoints: h0:(0,0);h2:(4,5);h3:(3,6);h4:(0,3);h5:(1,5)",
+        "stateEquivalence": "full snapshot + remaining action set",
+        "maxDepth": 5,
+        "maxExpanded": 10000,
+        "seconds": 0,
+        "completeEnumeration": true
+      },
+      "expanded": 5,
+      "generated": 4,
+      "frontierRemaining": 0,
+      "stopReason": "all declared schedules exhausted",
+      "completenessRationale": "Every ordered subset of the fixed endpoint actions was recursively enumerated; deterministic shortest first-event path per action; not all board moves",
+      "witnessHash": null,
+      "endStateHash": null,
+      "replayStatus": "None",
+      "witnessSummary": null
+    },
+    {
+      "id": "Q115-B-endpoint-freeze-h2",
+      "status": "ProvedAbsentWithinCompleteScope",
+      "scope": {
+        "startStateHash": "1FE865EE19AA97EB1B6925C38713EA2DB2D52370E279BC41F9B1C0ED04B02A84",
+        "prefixHash": "C6925A5C9C5DC54780177623F7E4EF7E0B2B49B0F48B743F325D5BADF165DE3A",
+        "goalPredicate": "live h4 parks at(0,3) and both h2 sources accessible with others fixed",
+        "forbiddenEvents": "Only declared actors, each moved at most once to its declared endpoint",
+        "continuationPredicate": "goal-state independently replayed prefix; no full-win obligation",
+        "successorGeneration": "all ordered subsets of actor/endpoints: h0:(0,0);h3:(3,6);h4:(0,3);h5:(1,5);h7:(1,0)",
+        "stateEquivalence": "full snapshot + remaining action set",
+        "maxDepth": 5,
+        "maxExpanded": 10000,
+        "seconds": 0,
+        "completeEnumeration": true
+      },
+      "expanded": 4,
+      "generated": 3,
+      "frontierRemaining": 0,
+      "stopReason": "all declared schedules exhausted",
+      "completenessRationale": "Every ordered subset of the fixed endpoint actions was recursively enumerated; deterministic shortest first-event path per action; not all board moves",
+      "witnessHash": null,
+      "endStateHash": null,
+      "replayStatus": "None",
+      "witnessSummary": null
+    },
+    {
+      "id": "Q115-B-endpoint-freeze-h3",
+      "status": "ProvedAbsentWithinCompleteScope",
+      "scope": {
+        "startStateHash": "1FE865EE19AA97EB1B6925C38713EA2DB2D52370E279BC41F9B1C0ED04B02A84",
+        "prefixHash": "C6925A5C9C5DC54780177623F7E4EF7E0B2B49B0F48B743F325D5BADF165DE3A",
+        "goalPredicate": "live h4 parks at(0,3) and both h2 sources accessible with others fixed",
+        "forbiddenEvents": "Only declared actors, each moved at most once to its declared endpoint",
+        "continuationPredicate": "goal-state independently replayed prefix; no full-win obligation",
+        "successorGeneration": "all ordered subsets of actor/endpoints: h0:(0,0);h2:(4,5);h4:(0,3);h5:(1,5);h7:(1,0)",
+        "stateEquivalence": "full snapshot + remaining action set",
+        "maxDepth": 5,
+        "maxExpanded": 10000,
+        "seconds": 0,
+        "completeEnumeration": true
+      },
+      "expanded": 9,
+      "generated": 8,
+      "frontierRemaining": 0,
+      "stopReason": "all declared schedules exhausted",
+      "completenessRationale": "Every ordered subset of the fixed endpoint actions was recursively enumerated; deterministic shortest first-event path per action; not all board moves",
+      "witnessHash": null,
+      "endStateHash": null,
+      "replayStatus": "None",
+      "witnessSummary": null
+    },
+    {
+      "id": "Q115-B-endpoint-freeze-h5",
+      "status": "ProvedAbsentWithinCompleteScope",
+      "scope": {
+        "startStateHash": "1FE865EE19AA97EB1B6925C38713EA2DB2D52370E279BC41F9B1C0ED04B02A84",
+        "prefixHash": "C6925A5C9C5DC54780177623F7E4EF7E0B2B49B0F48B743F325D5BADF165DE3A",
+        "goalPredicate": "live h4 parks at(0,3) and both h2 sources accessible with others fixed",
+        "forbiddenEvents": "Only declared actors, each moved at most once to its declared endpoint",
+        "continuationPredicate": "goal-state independently replayed prefix; no full-win obligation",
+        "successorGeneration": "all ordered subsets of actor/endpoints: h0:(0,0);h2:(4,5);h3:(3,6);h4:(0,3);h7:(1,0)",
+        "stateEquivalence": "full snapshot + remaining action set",
+        "maxDepth": 5,
+        "maxExpanded": 10000,
+        "seconds": 0,
+        "completeEnumeration": true
+      },
+      "expanded": 13,
+      "generated": 12,
+      "frontierRemaining": 0,
+      "stopReason": "all declared schedules exhausted",
+      "completenessRationale": "Every ordered subset of the fixed endpoint actions was recursively enumerated; deterministic shortest first-event path per action; not all board moves",
+      "witnessHash": null,
+      "endStateHash": null,
+      "replayStatus": "None",
+      "witnessSummary": null
+    },
+    {
+      "id": "Q115-C-h7",
+      "status": "NotFoundWithinBudget",
+      "scope": {
+        "startStateHash": "6DBE0213301A3A403E60BB13B0E39A0C5D094AFA4E6957D5714C210BD84966FA",
+        "prefixHash": "4A8432C14010DC3C864783649A7A501BB675C463C44D5E845585F20C6B10131E",
+        "goalPredicate": "b2 index0 consumed; h7 live and footprint parked off mouth; board cat9 preserved",
+        "forbiddenEvents": "clear(h7); consume(cat9)",
+        "continuationPredicate": "goal-state prefix must independently replay; full-win continuation not required",
+        "successorGeneration": "shortest-path anchors, stop at first consume; beamWidth=25; actors=all",
+        "stateEquivalence": "full snapshot canonical-v1; best depth dedup",
+        "maxDepth": 10,
+        "maxExpanded": 1500,
+        "seconds": 12,
+        "completeEnumeration": false
+      },
+      "expanded": 169,
+      "generated": 2974,
+      "frontierRemaining": 290,
+      "stopReason": "time budget during successor generation",
+      "completenessRationale": "Beam/first-event/depth/start restrictions; not exhaustive global search",
+      "witnessHash": null,
+      "endStateHash": null,
+      "replayStatus": "None",
+      "witnessSummary": null
+    },
+    {
+      "id": "Q115-C-h3",
+      "status": "NotFoundWithinBudget",
+      "scope": {
+        "startStateHash": "85B5BAE73288302C75BA5FC747A8423EDFB867A86D155BA2185DBC730E5D0F69",
+        "prefixHash": "76AF4CC8934678C6BAB2BD6245650DEF1C2F2A2951399D2262814D5643ACFA46",
+        "goalPredicate": "b2 index1 consumed; h3 live and footprint parked off mouth; board cat12 preserved",
+        "forbiddenEvents": "clear(h3); consume(cat12)",
+        "continuationPredicate": "goal-state prefix must independently replay; full-win continuation not required",
+        "successorGeneration": "shortest-path anchors, stop at first consume; beamWidth=25; actors=all",
+        "stateEquivalence": "full snapshot canonical-v1; best depth dedup",
+        "maxDepth": 10,
+        "maxExpanded": 1500,
+        "seconds": 12,
+        "completeEnumeration": false
+      },
+      "expanded": 218,
+      "generated": 3545,
+      "frontierRemaining": 0,
+      "stopReason": "restricted frontier exhausted (beam-pruned scope)",
+      "completenessRationale": "Beam/first-event/depth/start restrictions; not exhaustive global search",
+      "witnessHash": null,
+      "endStateHash": null,
+      "replayStatus": "None",
+      "witnessSummary": null
+    }
+  ],
+  "cases": [
+    {
+      "level": "Level00115",
+      "inputHash": "4BCCC3F06B93AC953D3505A83CD16383AFD60542DE8D8FACEC82291A7E6ED1B8",
+      "witnesses": [
+        {
+          "mode": "hybrid",
+          "drags": 113,
+          "planHash": "92A75AB86748061DC9A2C4D2CA6477205413F46748B8AD72B43B5A0B8B2FADAD",
+          "replayStatus": "IndependentSolved"
+        },
+        {
+          "mode": "improved",
+          "drags": 95,
+          "planHash": "5D8FF5AEF9980F7DDFBB324A3B9F0CACFADE3892AF8E202CAE13DA3078E4205E",
+          "replayStatus": "IndependentSolved"
+        }
+      ],
+      "queueEvents": [
+        {
+          "mode": "hybrid",
+          "drag": 67,
+          "holeId": 0,
+          "boxId": 1,
+          "boxIndex": 0,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": 68,
+          "stateHash": "80ABD19EF3793572C622BCD72EB38B3D1ABF3A88C9AC80F73AA5DC0C20AB1D9D",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 83,
+          "holeId": 5,
+          "boxId": 1,
+          "boxIndex": 1,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": 91,
+          "stateHash": "29BEA8DC5D626A892F295CF46F8C8347FFA25B0FB87199295D30D1DB672D1CDD",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 85,
+          "holeId": 6,
+          "boxId": 3,
+          "boxIndex": 0,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "CDD37EFFC0946F60F3C52219A32DC16AB6EDC3B5734AD483AA038092EB798E44",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 86,
+          "holeId": 0,
+          "boxId": 3,
+          "boxIndex": 1,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "2EABFE8927425631C65430101ABE1603295F33F0C17F1D9D7FE755AA1F6D5196",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 93,
+          "holeId": 1,
+          "boxId": 0,
+          "boxIndex": 0,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": 94,
+          "stateHash": "0145933ED3C9AD752CEBFED66AD2435E860E4BD3E7A324E05D5F672D0FF52F49",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 97,
+          "holeId": 5,
+          "boxId": 0,
+          "boxIndex": 1,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "587159CA418E2E238C7C997F7DF1E1CF5263CE42B9C4542FC304CDE963EB3DAD",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 111,
+          "holeId": 7,
+          "boxId": 2,
+          "boxIndex": 0,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "1B1DDB72C1E7E7ADCA6BDCFC9A45626670856E57A73D164F2AFE44EE9D5FFCB5",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 112,
+          "holeId": 3,
+          "boxId": 2,
+          "boxIndex": 1,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "2417D50CE014B33FC7E1E15CDC6B1F06528D600CF460B0A18687170AF2F99F48",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 113,
+          "holeId": 1,
+          "boxId": 2,
+          "boxIndex": 2,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "06D5EB4F613F54F096DB64EEA0351A83E94DAD551AD7E47F6AC7EBD77C342C5A",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 74,
+          "holeId": 6,
+          "boxId": 3,
+          "boxIndex": 0,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "A37E68B5CB8B232DDC265710FAA263A6EAB2859B71B8248C034CEBB2F5502F79",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 75,
+          "holeId": 0,
+          "boxId": 3,
+          "boxIndex": 1,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": 76,
+          "stateHash": "1FE865EE19AA97EB1B6925C38713EA2DB2D52370E279BC41F9B1C0ED04B02A84",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 84,
+          "holeId": 7,
+          "boxId": 2,
+          "boxIndex": 0,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "C84C2EEC60D61F4B0DAE6B20F1B696D630DE7AE6DB03B1387FE0006F94CFA6D1",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 85,
+          "holeId": 3,
+          "boxId": 2,
+          "boxIndex": 1,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "96417DFE1F503B1E10F3E05BE6BCD3427C3AABDAEFA052F654453BA5B9BF2B49",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 86,
+          "holeId": 1,
+          "boxId": 2,
+          "boxIndex": 2,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": 92,
+          "stateHash": "554CDA7C0DE56CE206EE4AA571126CA9448F123796B6DDD675E02A8DFFEB7A54",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 90,
+          "holeId": 0,
+          "boxId": 1,
+          "boxIndex": 0,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "441A9EE116D98B95EC1324178EF4202E611CA40D9AC7D8E911B7D019DE00D72B",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 91,
+          "holeId": 5,
+          "boxId": 1,
+          "boxIndex": 1,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "2947014E0DE4762256997D36BCD9675BC710E27E36299EA9A4897AA4204384A2",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 94,
+          "holeId": 1,
+          "boxId": 0,
+          "boxIndex": 0,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "DDC265638AC90B1600B92ECCA63E35A3E5B80F3FA3772E76C489BC5D8D072EB0",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 95,
+          "holeId": 5,
+          "boxId": 0,
+          "boxIndex": 1,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "06D5EB4F613F54F096DB64EEA0351A83E94DAD551AD7E47F6AC7EBD77C342C5A",
+          "unconsumedBoardSources": []
+        }
+      ],
+      "reliefChecks": [
+        {
+          "mode": "hybrid",
+          "drag": 108,
+          "postStateHash": "88B4578DE999B840E3C74E051A728538954A4841C40C338EF73404EB736C299B",
+          "sameRemainingTaskCheck": true,
+          "actualPairs": 2,
+          "withRetainedFootprintPairs": 0,
+          "released": [
+            {
+              "key": "cat:13",
+              "hole": 2,
+              "nextUse": 109
+            },
+            {
+              "key": "cat:6",
+              "hole": 2,
+              "nextUse": 110
+            }
+          ],
+          "independentFullWitness": "IndependentSolved"
+        },
+        {
+          "mode": "improved",
+          "drag": 74,
+          "postStateHash": "A37E68B5CB8B232DDC265710FAA263A6EAB2859B71B8248C034CEBB2F5502F79",
+          "sameRemainingTaskCheck": true,
+          "actualPairs": 1,
+          "withRetainedFootprintPairs": 0,
+          "released": [
+            {
+              "key": "box:3:1",
+              "hole": 0,
+              "nextUse": 75
+            }
+          ],
+          "independentFullWitness": "IndependentSolved"
+        }
+      ],
+      "completeContinuations": [
+        {
+          "question": "Q115-B-final-reposition",
+          "joinedStateHash": "9975D2BE25DAC13BA4F7E0F8AA91EA4A42F8EF0AE1C6136C6430B47409DD3D80",
+          "fullPlanHash": "B3097A8B2BBCDA84473E333B663EFC1A826ACF24D951875762060724CC7E9091",
+          "status": "IndependentSolved"
+        },
+        {
+          "question": "Q115-B-endpoint-baseline",
+          "joinedStateHash": "9975D2BE25DAC13BA4F7E0F8AA91EA4A42F8EF0AE1C6136C6430B47409DD3D80",
+          "fullPlanHash": "4BE6866CEFDDA9644F7079F6951F634BEC57F2AE9FC813A1F78BFD1882468C9D",
+          "status": "IndependentSolved"
+        }
+      ]
+    },
+    {
+      "level": "Level00098",
+      "inputHash": "D1EEF5761CAD37F699DD7536ED179C34B28DB625330E851A4F2DAF2E3DCD11D2",
+      "witnesses": [
+        {
+          "mode": "hybrid",
+          "drags": 86,
+          "planHash": "C6C213B0D157D3B66FD42903E3973A9A7288BE31CDB518513A9F1A8146465207",
+          "replayStatus": "IndependentSolved"
+        },
+        {
+          "mode": "improved",
+          "drags": 135,
+          "planHash": "A3B081228E7BB5A9417A7CE4E785B425FAF95D0A55D67945C339309B47E3EE1B",
+          "replayStatus": "IndependentSolved"
+        }
+      ],
+      "queueEvents": [
+        {
+          "mode": "hybrid",
+          "drag": 24,
+          "holeId": 4,
+          "boxId": 0,
+          "boxIndex": 0,
+          "remaining": 2,
+          "live": true,
+          "nextLiveMoveOffMouth": 25,
+          "stateHash": "3167BF5687375BF2CC8DC07284CC3F3F636CDC772520AB987F7C93FBE65BBEC3",
+          "unconsumedBoardSources": [
+            3
+          ]
+        },
+        {
+          "mode": "hybrid",
+          "drag": 26,
+          "holeId": 0,
+          "boxId": 0,
+          "boxIndex": 1,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": 27,
+          "stateHash": "557DCC424F78A90FC110210CD94D43DC3E49A42AA5D74073C66FAC5456B7B881",
+          "unconsumedBoardSources": [
+            8
+          ]
+        },
+        {
+          "mode": "hybrid",
+          "drag": 67,
+          "holeId": 5,
+          "boxId": 1,
+          "boxIndex": 0,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "2130D49C1F21A5B573151AF0DF10444D563ECA25D25E7B792DB9B81A69E991BA",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 69,
+          "holeId": 6,
+          "boxId": 1,
+          "boxIndex": 1,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "DB0FBAFE44579567CA21E154E042A5D353C3CA1AB4AE52176C8AE65A32499615",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 81,
+          "holeId": 6,
+          "boxId": 0,
+          "boxIndex": 2,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "DBC4DEE8FB24FFBF69EF8EF862F68F0B8E8055EEAABF3036EED2202226AAE188",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 82,
+          "holeId": 3,
+          "boxId": 1,
+          "boxIndex": 2,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "2136CD1A49249A58BC633F0F7C257A25AD5404778AF4398BFDBF311359B14707",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 83,
+          "holeId": 4,
+          "boxId": 1,
+          "boxIndex": 3,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "412E93ECFC50EA3B710D0BB242284A7F7AB38E93C947F2749212F81F3FB6AB13",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 84,
+          "holeId": 8,
+          "boxId": 0,
+          "boxIndex": 3,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "D34BA936A80CE8B22FDB2A573E4E0C737F1E4A9F771449B1A95D83D8E0E289B2",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 24,
+          "holeId": 4,
+          "boxId": 0,
+          "boxIndex": 0,
+          "remaining": 2,
+          "live": true,
+          "nextLiveMoveOffMouth": 25,
+          "stateHash": "9205BE95269269D9751DDC691419B365C89F11120AC26D872D4D7AEF73B6F0C2",
+          "unconsumedBoardSources": [
+            3
+          ]
+        },
+        {
+          "mode": "improved",
+          "drag": 26,
+          "holeId": 0,
+          "boxId": 0,
+          "boxIndex": 1,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": 32,
+          "stateHash": "46C38DDEB2B48E2ACC781776A76CA092CF36430C7E2D80B19E9F8F345A571215",
+          "unconsumedBoardSources": [
+            8
+          ]
+        },
+        {
+          "mode": "improved",
+          "drag": 126,
+          "holeId": 6,
+          "boxId": 0,
+          "boxIndex": 2,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": 127,
+          "stateHash": "3FC5C3E70A475474156077A31C6EBEF632A61EFF9BF9E43D43E787EEB530001B",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 128,
+          "holeId": 8,
+          "boxId": 0,
+          "boxIndex": 3,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "35094BB5E97B7029919B654A1E87A1FEB4F1D3F42D6F22103C4DAC39B7D63889",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 131,
+          "holeId": 5,
+          "boxId": 1,
+          "boxIndex": 0,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "759841CBB4DB3B6D50181E80BD3B9930ACC6D8DB8235712B6CDEA1345F86B060",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 132,
+          "holeId": 6,
+          "boxId": 1,
+          "boxIndex": 1,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "56118E96F012C9273903709169E235B59340B8C27374D4CD1D67F22FCDA8D957",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 134,
+          "holeId": 3,
+          "boxId": 1,
+          "boxIndex": 2,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "64ECB8768121629CE90FC5A10D8A36EC7C6009103500C4EEDD2B84DFBDD1ABDC",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 135,
+          "holeId": 4,
+          "boxId": 1,
+          "boxIndex": 3,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "56C44BF301B3F209D10BD1ECEFAAA8EE03328D2039C0D0025D68342F4706C839",
+          "unconsumedBoardSources": []
+        }
+      ],
+      "reliefChecks": [
+        {
+          "mode": "hybrid",
+          "drag": 78,
+          "postStateHash": "4020C45E44B9F3F70B1FE675F54EB23F4E9CCAAE7DF17EFC276978DE3B99F307",
+          "sameRemainingTaskCheck": true,
+          "actualPairs": 1,
+          "withRetainedFootprintPairs": 0,
+          "released": [
+            {
+              "key": "cat:12",
+              "hole": 7,
+              "nextUse": 79
+            }
+          ],
+          "independentFullWitness": "IndependentSolved"
+        },
+        {
+          "mode": "improved",
+          "drag": 119,
+          "postStateHash": "491C11E91604695204AB748FE4CD9509FC50408CF66B67E1775236DBF14D8CFD",
+          "sameRemainingTaskCheck": true,
+          "actualPairs": 1,
+          "withRetainedFootprintPairs": 0,
+          "released": [
+            {
+              "key": "cat:12",
+              "hole": 7,
+              "nextUse": 120
+            }
+          ],
+          "independentFullWitness": "IndependentSolved"
+        }
+      ],
+      "completeContinuations": []
+    },
+    {
+      "level": "Level00129",
+      "inputHash": "DE860A3055311057874E64E9E266C084CC224D4385431791A0382061EA4D2985",
+      "witnesses": [
+        {
+          "mode": "hybrid",
+          "drags": 122,
+          "planHash": "CE0C8FEE329F357327CA281143616AE18690F2592BB5D0674D586D584D7595C1",
+          "replayStatus": "IndependentSolved"
+        },
+        {
+          "mode": "improved",
+          "drags": 189,
+          "planHash": "57CA5140A4796588E8A4F3BB2FB278FF51DE11B7124CB9B2876C2F2B925761D9",
+          "replayStatus": "IndependentSolved"
+        }
+      ],
+      "queueEvents": [
+        {
+          "mode": "hybrid",
+          "drag": 60,
+          "holeId": 4,
+          "boxId": 0,
+          "boxIndex": 0,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": 91,
+          "stateHash": "EB950D4C05476CF3052058F579F9AD4314B35D4FAD7CA1BEA920170AA5E69A6B",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 82,
+          "holeId": 1,
+          "boxId": 2,
+          "boxIndex": 0,
+          "remaining": 2,
+          "live": true,
+          "nextLiveMoveOffMouth": 83,
+          "stateHash": "ADA4B9210E7754F82B3605D0953062DE743712C18CA33C08EFF0F071F18C9CF6",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 84,
+          "holeId": 5,
+          "boxId": 2,
+          "boxIndex": 1,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": 107,
+          "stateHash": "46814978A87B538968FDFEA66B4481C87EA77716D5A22ED4DEDCB645093930E6",
+          "unconsumedBoardSources": [
+            1
+          ]
+        },
+        {
+          "mode": "hybrid",
+          "drag": 108,
+          "holeId": 8,
+          "boxId": 2,
+          "boxIndex": 2,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "C3E2895773688FAEE40B156C1E5AD6BDAE633D37C2157FE71C77CF5585B4704B",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 109,
+          "holeId": 7,
+          "boxId": 2,
+          "boxIndex": 3,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "D61A0D9015C67815F298234A35660FEA9B7B53B668D576C1F0C351E79FEEE790",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 111,
+          "holeId": 1,
+          "boxId": 2,
+          "boxIndex": 4,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "AB1B368C2EB85D26EF3DF87B1EB6C9C984DFA0C3C656C8393EB6408FFBB6D4A2",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 111,
+          "holeId": 1,
+          "boxId": 2,
+          "boxIndex": 5,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "AB1B368C2EB85D26EF3DF87B1EB6C9C984DFA0C3C656C8393EB6408FFBB6D4A2",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 114,
+          "holeId": 0,
+          "boxId": 0,
+          "boxIndex": 1,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": 115,
+          "stateHash": "EAC707274CB9893EB1143F33F1B8ACEB9E0960A49C3B3AD2F2F74D086DDE9C2D",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 116,
+          "holeId": 3,
+          "boxId": 0,
+          "boxIndex": 2,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "14891D2E4CBABC64725F2DAB7775AB1A298FFBFFB18156E3E8A79423B006F40F",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 119,
+          "holeId": 3,
+          "boxId": 1,
+          "boxIndex": 0,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "FA537F80AB499569837074F4E479563A5E640D4EACD92BB20E928D3C38651428",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 120,
+          "holeId": 2,
+          "boxId": 1,
+          "boxIndex": 1,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "87C3E96FB5208390FB41363E7FCA412B4E156A51228BC4D013650CAE029172C1",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 121,
+          "holeId": 0,
+          "boxId": 1,
+          "boxIndex": 2,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "27BA1739CD8F75359397E3F142D4FC2079521CB4D540678C395B125FC9EAC46D",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "hybrid",
+          "drag": 122,
+          "holeId": 4,
+          "boxId": 1,
+          "boxIndex": 3,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "B5F42AE305BC7E93FABE46B0154A461441AFBC595D32DB831267F2ED3025DDD2",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 135,
+          "holeId": 4,
+          "boxId": 0,
+          "boxIndex": 0,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": 139,
+          "stateHash": "B65D7655D1E716162FE5970C0B18958EF54A0328F6E7978EE5AFE6E0BF24AA1F",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 154,
+          "holeId": 0,
+          "boxId": 0,
+          "boxIndex": 1,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": 155,
+          "stateHash": "0CAD91A31771F544BCFD29776DAD5A936ACC951AE7F1AF40291B031539CF331B",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 162,
+          "holeId": 3,
+          "boxId": 0,
+          "boxIndex": 2,
+          "remaining": 1,
+          "live": true,
+          "nextLiveMoveOffMouth": 176,
+          "stateHash": "3FFADB25EDD74D02BDDA01876B2E49617D2F0FAEECDB6A847C080CA3CF59684D",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 178,
+          "holeId": 1,
+          "boxId": 2,
+          "boxIndex": 0,
+          "remaining": 2,
+          "live": true,
+          "nextLiveMoveOffMouth": 179,
+          "stateHash": "607A8CD7C08E69940690443BC8F235F978E1F4F8B961AC2FACD74A08BBA1CA12",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 180,
+          "holeId": 5,
+          "boxId": 2,
+          "boxIndex": 1,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "0E41744EE5BADD088A9D27141D05E5B4C4010A61F0B57D0712E68D1528D896F5",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 181,
+          "holeId": 8,
+          "boxId": 2,
+          "boxIndex": 2,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "73B1BE5BF17898E6AF764786DB450498F0D7C125327C50157562D419BA953DC0",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 182,
+          "holeId": 7,
+          "boxId": 2,
+          "boxIndex": 3,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "E7C8065BD9148B665BB448CA188BC18428BF426C74BE7CD7A470F1FECC14B553",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 183,
+          "holeId": 1,
+          "boxId": 2,
+          "boxIndex": 4,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "6E728C1CF3F3A2E99C625A3B48B0AD12BAF8435F8618DF77AC9801AF90FFD7AF",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 183,
+          "holeId": 1,
+          "boxId": 2,
+          "boxIndex": 5,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "6E728C1CF3F3A2E99C625A3B48B0AD12BAF8435F8618DF77AC9801AF90FFD7AF",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 186,
+          "holeId": 3,
+          "boxId": 1,
+          "boxIndex": 0,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "657CCB8A0F235F61060D95E551103A2AA21C70585D0DD868764CA776D3022007",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 187,
+          "holeId": 2,
+          "boxId": 1,
+          "boxIndex": 1,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "6AB49CA31375973BD299E525CE8593323A4ABC038C996C61FA13DF2961DCD76F",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 188,
+          "holeId": 0,
+          "boxId": 1,
+          "boxIndex": 2,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "FB9E0DCB0FD587D7D74D2FA1AE276CA6B94ABA53485F712CAC5B4F158633E928",
+          "unconsumedBoardSources": []
+        },
+        {
+          "mode": "improved",
+          "drag": 189,
+          "holeId": 4,
+          "boxId": 1,
+          "boxIndex": 3,
+          "remaining": 0,
+          "live": false,
+          "nextLiveMoveOffMouth": null,
+          "stateHash": "B5F42AE305BC7E93FABE46B0154A461441AFBC595D32DB831267F2ED3025DDD2",
+          "unconsumedBoardSources": []
+        }
+      ],
+      "reliefChecks": [
+        {
+          "mode": "hybrid",
+          "drag": 108,
+          "postStateHash": "C3E2895773688FAEE40B156C1E5AD6BDAE633D37C2157FE71C77CF5585B4704B",
+          "sameRemainingTaskCheck": true,
+          "actualPairs": 1,
+          "withRetainedFootprintPairs": 0,
+          "released": [
+            {
+              "key": "box:2:3",
+              "hole": 7,
+              "nextUse": 109
+            }
+          ],
+          "independentFullWitness": "IndependentSolved"
+        },
+        {
+          "mode": "improved",
+          "drag": 180,
+          "postStateHash": "0E41744EE5BADD088A9D27141D05E5B4C4010A61F0B57D0712E68D1528D896F5",
+          "sameRemainingTaskCheck": true,
+          "actualPairs": 1,
+          "withRetainedFootprintPairs": 0,
+          "released": [
+            {
+              "key": "box:2:2",
+              "hole": 8,
+              "nextUse": 181
+            }
+          ],
+          "independentFullWitness": "IndependentSolved"
+        }
+      ],
+      "completeContinuations": []
+    }
+  ],
+  "difficultyScore": null,
+  "difficultyLabel": "Unrated"
+}
