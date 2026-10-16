@@ -352,6 +352,8 @@ public sealed class StrongBottleneckVerifier
         {
             int breaker=check.originalBreakDrag-1, consumer=check.originalConsumeDrag-1;
             if(breaker<0 || consumer<0 || breaker>=n || consumer>=n || consumer<=breaker)continue;
+            // Consuming before breaking would reverse this hole's own action order.
+            if(moves[breaker].holeId==moves[consumer].holeId)continue;
             // Move the entire relevant sequence of the consumer actor before the
             // blocker clear, NOT merely one drag (which may violate actor order).
             var consumerActor=moves[consumer].holeId;
@@ -360,8 +362,11 @@ public sealed class StrongBottleneckVerifier
             var moveBefore=Enumerable.Range(0,n).ToList();
             moveBefore.RemoveAll(i=>promoted.Contains(i));
             var start=moveBefore.IndexOf(breaker);
-            moveBefore.InsertRange(start,promoted);
-            if(PreservesActorOrder(moves,moveBefore))yield return moveBefore.ToArray();
+            if(start>=0 && start<=moveBefore.Count)
+            {
+                moveBefore.InsertRange(start,promoted);
+                if(PreservesActorOrder(moves,moveBefore))yield return moveBefore.ToArray();
+            }
             // Symmetrically defer blocker actions until after the consumer has
             // accessed the target; no same-actor order is ever reversed.
             var blockerActor=moves[breaker].holeId;
@@ -369,9 +374,13 @@ public sealed class StrongBottleneckVerifier
                 .Where(i=>moves[i].holeId==blockerActor).ToArray();
             var delay=Enumerable.Range(0,n).ToList();
             delay.RemoveAll(i=>postponed.Contains(i));
-            var after=delay.IndexOf(consumer)+1;
-            delay.InsertRange(after,postponed);
-            if(PreservesActorOrder(moves,delay))yield return delay.ToArray();
+            var consumerIndex=delay.IndexOf(consumer);
+            var after=consumerIndex+1;
+            if(consumerIndex>=0 && after<=delay.Count)
+            {
+                delay.InsertRange(after,postponed);
+                if(PreservesActorOrder(moves,delay))yield return delay.ToArray();
+            }
         }
     }
     private static bool PreservesActorOrder(IReadOnlyList<SolverMove> moves,List<int> permutation)
