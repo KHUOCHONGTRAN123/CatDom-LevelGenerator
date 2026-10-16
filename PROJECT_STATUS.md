@@ -36,3 +36,5 @@ Board 7×8; hole footprint 25–32. No similarity/deduplication filtering betwee
 - GitHub CLI 2.102.0 authenticated as KHUOCHONGTRAN123. Private repository: https://github.com/KHUOCHONGTRAN123/CatDom-LevelGenerator. origin connected; main and develop pushed; default branch main.
 - Tag `v0.1-m4.3` withheld because the baseline test harness fails. An initial source import is not an acceptance checkpoint.
 - GitHub Actions is enabled and the workflow is active. A hosted verification run was dispatched on develop: https://github.com/KHUOCHONGTRAN123/CatDom-LevelGenerator/actions/runs/38850429183. Consult that run for its current result.
+
+- First hosted CI: restore/build and countdown oracle PASS; generator harness failed config validation because Windows checkout changed catalog line endings. Added .gitattributes to preserve exact catalog bytes; source algorithms remain unchanged. A subsequent CI run verifies this Git configuration fix.
