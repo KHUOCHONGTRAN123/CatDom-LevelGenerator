@@ -36,6 +36,11 @@ Choose a new, nonexistent output directory each run. Alternatively run `Run-M43-
 
 ## Branches and pull requests
 
+For the ChatGPT Web patch workflow, use `Tools/chatgpt-workflow/Apply-ChatGPT-Patch.bat`
+and `Tools/chatgpt-workflow/Publish-ChatGPT-Changes.bat`. See
+[workflow instructions](Tools/chatgpt-workflow/README.md) for prerequisites, dry-runs,
+validation logs, explicit publication confirmation, and safe recovery.
+
 `main` holds accepted stable milestones. `develop` integrates reviewed work. Start actual milestone implementation from develop; never implement it directly on main. Do not create empty feature branches.
 
 ```powershell
