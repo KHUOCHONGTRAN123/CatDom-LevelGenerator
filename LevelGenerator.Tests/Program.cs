@@ -323,6 +323,27 @@ Expect(StrongBottleneckVerifier.PreferredReorders(suggested,new[]{reorderingChec
 var sameActor=new StrongVerificationCheck {pattern="RegionRelease",originalBreakDrag=1,originalConsumeDrag=4};
 Expect(!StrongBottleneckVerifier.PreferredReorders(suggested,new[]{sameActor}).Any(),
     "Focused seeds preserve per-hole drag chronology");
+var sameHoleOnly=new List<CatDom.CoreSolver.SolverMove>{new(){holeId=7},new(){holeId=7}};
+Expect(StrongBottleneckVerifier.PreferredReorders(sameHoleOnly,new[]{
+    new StrongVerificationCheck{pattern="RegionRelease",originalBreakDrag=1,originalConsumeDrag=2}}).ToArray().Length==0,
+    "Same-hole breaker and consumer yield no reorder even when removal would empty the schedule");
+var interleaved=new List<CatDom.CoreSolver.SolverMove>
+{
+    new(){holeId=0},new(){holeId=1},new(){holeId=2},new(){holeId=3},
+    new(){holeId=1},new(){holeId=2},new(){holeId=0}
+};
+var interleavedChecks=new[]{
+    new StrongVerificationCheck{pattern="RegionRelease",originalBreakDrag=1,originalConsumeDrag=7},
+    new StrongVerificationCheck{pattern="RegionRelease",originalBreakDrag=2,originalConsumeDrag=6}};
+var focusedOrders=StrongBottleneckVerifier.PreferredReorders(interleaved,interleavedChecks).ToArray();
+Expect(focusedOrders.Length==2 && focusedOrders[0].SequenceEqual(new[]{0,2,5,1,3,4,6}) &&
+    focusedOrders[1].SequenceEqual(new[]{0,2,3,5,1,4,6}),
+    "Skipping same-hole checks still permits consumer promotion and breaker delay across different holes");
+Expect(focusedOrders.All(order=>order.OrderBy(i=>i).SequenceEqual(Enumerable.Range(0,interleaved.Count)) &&
+    interleaved.Select(m=>m.holeId).Distinct().All(actor=>
+        order.Where(i=>interleaved[i].holeId==actor).SequenceEqual(
+            Enumerable.Range(0,interleaved.Count).Where(i=>interleaved[i].holeId==actor)))),
+    "Both focused permutations retain every drag exactly once and preserve each hole's action order");
 var strongVerifier=new StrongBottleneckVerifier(catalogPath);
 var noWitness=strongVerifier.VerifyCertified(File.ReadAllText(Path.Combine(root,"Levels","Level00115.json")),
     "RegionRelease",Array.Empty<CatDom.CoreSolver.SolverMove>(),100,5);
