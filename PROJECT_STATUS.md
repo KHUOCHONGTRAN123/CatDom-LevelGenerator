@@ -33,6 +33,8 @@ Board 7×8; hole footprint 25–32. No similarity/deduplication filtering betwee
 - Generator executable harness: FAIL, unhandled System.ArgumentOutOfRangeException in List.InsertRange, StrongBottleneckVerifier.PreferredReorders at LevelGenerator.Core/StrongVerification.cs:363, called by LevelGenerator.Tests/Program.cs:324.
 - Independent countdown oracle group: PASS. Legacy aggregate suite was not run because its historical corpus is incomplete here.
 - No gameplay, constructor, solver, analyzer or generation algorithm changes made for workflow setup.
-- GitHub CLI installed (2.102.0); no authenticated GitHub host. Repository creation, remote, push and hosted Actions require authentication.
+- GitHub CLI 2.102.0 authenticated as KHUOCHONGTRAN123. Private repository: https://github.com/KHUOCHONGTRAN123/CatDom-LevelGenerator. origin connected; main and develop pushed; default branch main.
 - Tag `v0.1-m4.3` withheld because the baseline test harness fails. An initial source import is not an acceptance checkpoint.
-- CI configuration is prepared; hosted run has not occurred.
+- GitHub Actions is enabled and the workflow is active. A hosted verification run was dispatched on develop: https://github.com/KHUOCHONGTRAN123/CatDom-LevelGenerator/actions/runs/38850429183. Consult that run for its current result.
+
+- First hosted CI: restore/build and countdown oracle PASS; generator harness failed config validation because Windows checkout changed catalog line endings. Added .gitattributes to preserve exact catalog bytes; source algorithms remain unchanged. Follow-up hosted CI confirmed config validation now passes; restore/build and countdown oracle PASS. Generator harness reproduces the local ArgumentOutOfRangeException at StrongVerification.cs:363 / Program.cs:324. Run: https://github.com/KHUOCHONGTRAN123/CatDom-LevelGenerator/actions/runs/38850621346. Overall CI conclusion: FAILURE; no acceptance tag created.
